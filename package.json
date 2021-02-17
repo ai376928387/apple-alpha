@@ -9,10 +9,31 @@
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "npm run lint --fix",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "stylelint --syntax scss --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "echo $HUSKY_GIT_PARAMS"
+    }
+  },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@quasar/quasar-app-extension-dotenv": "^1.1.0",
+    "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
-    "quasar": "^1.0.0"
+    "husky": "^5.0.9",
+    "quasar": "^1.0.0",
+    "vue-chartjs": "^3.5.1"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
