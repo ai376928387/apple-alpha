@@ -6,13 +6,16 @@
     <div class="row">
       <month-graph :source="monthlySource"/>
     </div>
+    <div class="row">
+      <daily-graph :source="source" />
+    </div>
   </q-page>
 </template>
 <script>
 import { getDataDetail } from '@/api/index'
 import YearGraph from '@/components/YearGraph'
 import MonthGraph from '@/components/MonthGraph'
-
+import DailyGraph from '@/components/DailyGraph'
 export default {
   name: 'PageIndex',
   data () {
@@ -54,7 +57,8 @@ export default {
   },
   components: {
     YearGraph,
-    MonthGraph
+    MonthGraph,
+    DailyGraph
   },
   methods: {
     getDataDetail () {

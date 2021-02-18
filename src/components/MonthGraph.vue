@@ -4,6 +4,7 @@
     <bar-chart
       :chart-data="sortedSource"
       :options="chartOptions"
+      @click="onClick($event)"
     />
   </div>
 </template>
@@ -47,7 +48,7 @@ export default {
 
       datasets = datasets.sort((a, b) => (a.data[0] > b.data[0]) ? 1 : -1)
       const data = {
-        labels: ['monthly rainfall'],
+        labels: ['month'],
         datasets
       }
       return data
@@ -63,6 +64,9 @@ export default {
       const z = Math.floor(Math.random() * 256)
       const color = 'rgb(' + x + ',' + y + ',' + z + ')'
       return color
+    },
+    onClick ($event) {
+      console.log($event)
     }
   }
 }
